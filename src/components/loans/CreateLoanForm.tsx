@@ -6,12 +6,12 @@ import CurrencyInput from 'react-currency-input-field'
 import { Loan } from '@/types/loan'
 
 const CreateLoanForm: React.FC = () => {
-  const [ amount, setAmount ] = useState<number>(0)
-  const [ interestRate, setInterestRate ] = useState<number>(0.0)
-  const [ period, setPeriod ] = useState<number>(0)
-  const [ startDate, setStartDate ] = useState<DateTime>(DateTime.now())
+  const [ amount, setAmount ] = useState<number>( 0 )
+  const [ interestRate, setInterestRate ] = useState<number>( 0.0 )
+  const [ period, setPeriod ] = useState<number>( 0 )
+  const [ startDate, setStartDate ] = useState<DateTime>( DateTime.now())
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {
     e.preventDefault()
 
     const loan = new Loan( amount, interestRate, period, startDate )

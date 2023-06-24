@@ -9,7 +9,7 @@ const Home: React.FC = () => {
           Loan Helper
         </h1>
         <p className='text-xl text-center my-5'>
-          Demystify your loan! Estimate loan details, experiment with pay-off schedules, and more! 
+          Demystify your loan! Estimate loan details, experiment with pay-off schedules, and more!
         </p>
         <Link href='/loans' className='p-3 rounded-lg bg-gray-700 font-bold text-xl'>
           Get Started
