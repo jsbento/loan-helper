@@ -74,7 +74,7 @@ export class Loan {
   }
 
   interestPayment(): number {
-    return this.amount * ( this.interestRate / 100 ) / 12
+    return this.principal * ( this.interestRate / 100 ) / 12
   }
 
   makePayment( customPayment: number | undefined = undefined ): Payment {
@@ -88,10 +88,7 @@ export class Loan {
       }
     }
 
-    let pmtAmount = this.monthlyPayment
-    if( customPayment ) {
-      pmtAmount = customPayment
-    }
+    let pmtAmount = customPayment ?? this.monthlyPayment
 
     const interestPayment = this.interestPayment()
     if( pmtAmount <= interestPayment ) {
@@ -104,6 +101,8 @@ export class Loan {
         note: 'Payment is less than interest',
         type: PaymentType.InterestOnly,
       }
+    } else {
+      this.totalInterestPaid += interestPayment
     }
 
     let principalPayment = pmtAmount - interestPayment
@@ -133,7 +132,10 @@ export class Loan {
         break
       }
     }
+
     this.principal = oPrincipal
+    this.totalPrincipalPaid = 0.0
+    this.totalInterestPaid = 0.0
 
     return schedule
   }
